@@ -51,7 +51,7 @@
     "./Specs/**/*"
   ],
   "dependencies": {
-    "@cesium/engine": "^11.1.0",
+    "@cesium/engine": "./packages/engine/cesium-engine-11.1.0.tgz",
     "@cesium/widgets": "^8.1.0"
   },
   "devDependencies": {
