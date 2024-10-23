@@ -52,7 +52,8 @@
   ],
   "dependencies": {
     "@cesium/engine": "./packages/engine/cesium-engine-11.1.0.tgz",
-    "@cesium/widgets": "^8.1.0"
+    "@cesium/widgets": "^8.1.0",
+    "vue": "^3.5.12"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.1",
