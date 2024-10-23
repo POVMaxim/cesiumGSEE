@@ -1267,7 +1267,7 @@ function loadAsynchronous(primitive, frameState) {
     const promise = combineGeometryTaskProcessor.scheduleTask(
       PrimitivePipeline.packCombineGeometryParameters(
         {
-          createGeometryResults: isProxy(primitive._createGeometryResults) ? toRaw(primitive._createGeometryResults): primitive._createGeometryResults,,
+          createGeometryResults: isProxy(primitive._createGeometryResults) ? toRaw(primitive._createGeometryResults): primitive._createGeometryResults,
           instances: instances,
           ellipsoid: projection.ellipsoid,
           projection: projection,
