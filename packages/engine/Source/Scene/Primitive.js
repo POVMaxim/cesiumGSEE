@@ -38,6 +38,7 @@ import PrimitivePipeline from "./PrimitivePipeline.js";
 import PrimitiveState from "./PrimitiveState.js";
 import SceneMode from "./SceneMode.js";
 import ShadowMode from "./ShadowMode.js";
+import { isProxy, toRaw  } from 'vue';
 
 /**
  * A primitive represents geometry in the {@link Scene}.  The geometry can be from a single {@link GeometryInstance}
@@ -1266,7 +1267,7 @@ function loadAsynchronous(primitive, frameState) {
     const promise = combineGeometryTaskProcessor.scheduleTask(
       PrimitivePipeline.packCombineGeometryParameters(
         {
-          createGeometryResults: primitive._createGeometryResults,
+          createGeometryResults: isProxy(primitive._createGeometryResults) ? toRaw(primitive._createGeometryResults): primitive._createGeometryResults,,
           instances: instances,
           ellipsoid: projection.ellipsoid,
           projection: projection,
@@ -1274,7 +1275,7 @@ function loadAsynchronous(primitive, frameState) {
           scene3DOnly: scene3DOnly,
           vertexCacheOptimize: primitive.vertexCacheOptimize,
           compressVertices: primitive.compressVertices,
-          modelMatrix: primitive.modelMatrix,
+          modelMatrix: primitive.modelMatrix.clone ? primitive.modelMatrix.clone() : primitive.modelMatrix,
           createPickOffsets: primitive._createPickOffsets,
         },
         transferableObjects,
